@@ -1,0 +1,9 @@
+{
+  "name": "vue-modal",
+  "version": "0.0.1",
+  "description": "my first vue modal app",
+  "dependencies": {
+    "art-dialog": "^7.0.0",
+    "express": "^4.17.1"
+  }
+}

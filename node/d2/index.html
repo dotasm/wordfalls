@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <style>
+        body {            
+            background: linear-gradient(45deg,#020031,#6d3353);
+            box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+        }
+    </style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/artDialog/7.0.0/dialog-plus.js"></script>
+</head>
+
+<body>
+    <table style="position: absolute;width: 100%;height: 100%;">
+        <tr>
+            <td style="vertical-align: top;"><label data-event="test1"></label></td>
+            <td style="vertical-align: top;"><label data-event="test2"></label></td>
+            <td style="vertical-align: top;"><label data-event="test3"></label></td>
+            <td style="vertical-align: top;width: 10%;"></td>
+        </tr>
+        <tr>
+            <td style="vertical-align: top;"><label data-event="test4"></label></td>
+            <td style="vertical-align: top;"><label data-event="test5"></label></td>
+            <td style="vertical-align: top;"><label data-event="test6"></label></td>
+            <td style="vertical-align: top;width: 10%;"></td>
+        </tr>
+        <tr>
+            <td style="vertical-align: top;"><label data-event="test7"></label></td>
+            <td style="vertical-align: top;"><label data-event="test8"></label></td>
+            <td style="vertical-align: top;"><label data-event="test9"></label></td>
+            <td style="vertical-align: top;width: 10%;"></td>
+        </tr>
+    </table>
+    
+   
+    <script>
+        var ms = 3000;
+        var d_title = '消息';
+        var d_content = '风吹起的青色衣衫，夕阳里的温暖容颜，你比以前更加美丽，像盛开的花<br>——许巍《难忘的一天》';
+        var d_okValue = '关 闭';
+
+        $('label[data-event=test1]').on('click', function() {
+            var d = dialog({
+                title: d_title,
+                content: d_content,
+                okValue: d_okValue,
+                ok: function() {                  
+                    console.log('ok');
+                    return true;
+                }
+            });
+            d.show(this);
+            
+            setTimeout(function () {
+              d.close().remove();
+            }, ms);
+        });
+        $('label[data-event=test2]').on('click', function() {
+            var d = dialog({
+                title: d_title,
+                content: d_content,
+                okValue: d_okValue,                   
+                ok: function() {                  
+                    console.log('ok');
+                    return true;
+                }
+            });
+            d.show(this);
+            
+            setTimeout(function () {
+              d.close().remove();
+            }, ms);
+        });
+        $('label[data-event=test3]').on('click', function() {
+            var d = dialog({
+                title: d_title,
+                content: d_content,
+                okValue: d_okValue,                  
+                ok: function() {                  
+                    console.log('ok');
+                    return true;
+                }
+            });
+            d.show(this);
+            
+            setTimeout(function () {
+              d.close().remove();
+            }, ms);
+        });
+        $('label[data-event=test4]').on('click', function() {
+            var d = dialog({
+                title: d_title,
+                content: d_content,
+                okValue: d_okValue,                
+                ok: function() {                  
+                    console.log('ok');
+                    return true;
+                }
+            });
+            d.show(this);
+            
+            setTimeout(function () {
+              d.close().remove();
+            }, ms);
+        });
+        $('label[data-event=test5]').on('click', function() {
+            var d = dialog({
+                title: d_title,
+                content: d_content,
+                okValue: d_okValue,
+                ok: function() {                  
+                    console.log('ok');
+                    return true;
+                }
+            });
+            d.show(this);
+            
+            setTimeout(function () {
+              d.close().remove();
+            }, ms);
+        });
+        $('label[data-event=test6]').on('click', function() {
+            var d = dialog({
+                title: d_title,
+                content: d_content,
+                okValue: d_okValue,
+                ok: function() {                  
+                    console.log('ok');
+                    return true;
+                }
+            });
+            d.show(this);
+            
+            setTimeout(function () {
+              d.close().remove();
+            }, ms);
+        });
+        $('label[data-event=test7]').on('click', function() {
+            var d = dialog({
+                title: d_title,
+                content: d_content,
+                okValue: d_okValue,
+                ok: function() {                  
+                    console.log('ok');
+                    return true;
+                }
+            });
+            d.show(this);
+            
+            setTimeout(function () {
+              d.close().remove();
+            }, ms);
+        });
+        $('label[data-event=test8]').on('click', function() {
+            var d = dialog({
+                title: d_title,
+                content: d_content,
+                okValue: d_okValue,
+                ok: function() {                  
+                    console.log('ok');
+                    return true;
+                }
+            });
+            d.show(this);
+            
+            setTimeout(function () {
+              d.close().remove();
+            }, ms);
+        });
+        $('label[data-event=test9]').on('click', function() {
+            var d = dialog({
+                title: d_title,
+                content: d_content,
+                okValue: d_okValue,
+                ok: function() {                  
+                    console.log('ok');
+                    return true;
+                }
+            });
+            d.show(this);
+            
+            setTimeout(function () {
+              d.close().remove();
+            }, ms);
+        });
+
+        for (i = 0; i < 3; i++) { 
+            var offset = parseInt(Math.random() * 10);
+            if (offset == 0) offset = 1;
+
+            item = "label[data-event=test" + offset + "]";
+            console.log(item)
+            $(item).trigger("click");
+        }
+        
+    </script>
+</body>
+
+</html>
