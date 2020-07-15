@@ -30,14 +30,15 @@ amqp.connect('amqp://localhost').then(function(conn) {
   process.once('SIGINT', function() { conn.close(); });
   return conn.createChannel().then(function(ch) {
 
-    var ok = ch.assertQueue('hello', {durable: false});
+    var ok = ch.assertQueue('pipe_level_3', {durable: false});
 
     ok = ok.then(function(_qok) {
-      return ch.consume('hello', function(msg) {
+      return ch.consume('pipe_level_3', function(msg) {
         // add websocket
-        if (msg.content.toString() == 'fire') {
+        /*if (msg.content.toString() == 'fire') {
           io.emit('chat message', fire_msg);
-        }
+        }*/
+        io.emit('chat message', msg.content.toString());
 
         console.log(" [x] Received '%s'", msg.content.toString());
       }, {noAck: true});

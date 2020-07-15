@@ -1,41 +1,225 @@
 <!doctype html>
-<html>
+<html lang="zh">
   <head>
+    <meta charset="UTF-8">
     <title>Socket.IO chat</title>
     <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: 0.5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
+      body {            
+        background: linear-gradient(45deg,#020031,#6d3353);
+        box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+      }
     </style>
     <script src="https://lib.baomitu.com/socket.io/2.3.0/socket.io.js"></script>
     <script src="https://lib.baomitu.com/jquery/3.5.0/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/artDialog/7.0.0/dialog-plus.js"></script>
+  </head>
+  <body>
+    <table style="position: absolute;width: 100%;height: 100%;">
+      <tr>
+          <td style="vertical-align: top;"><label data-event="test1"></label></td>
+          <td style="vertical-align: top;"><label data-event="test2"></label></td>
+          <td style="vertical-align: top;"><label data-event="test3"></label></td>
+          <td style="vertical-align: top;width: 10%;"></td>
+      </tr>
+      <tr>
+          <td style="vertical-align: top;"><label data-event="test4"></label></td>
+          <td style="vertical-align: top;"><label data-event="test5"></label></td>
+          <td style="vertical-align: top;"><label data-event="test6"></label></td>
+          <td style="vertical-align: top;width: 10%;"></td>
+      </tr>
+      <tr>
+          <td style="vertical-align: top;"><label data-event="test7"></label></td>
+          <td style="vertical-align: top;"><label data-event="test8"></label></td>
+          <td style="vertical-align: top;"><label data-event="test9"></label></td>
+          <td style="vertical-align: top;width: 10%;"></td>
+      </tr>
+    </table>
+
     <script>
-      $(function () {
-        var socket = io();
-        $('form').submit(function(e) {
+      var ms = 3000;
+      var d_title = '消息';
+      var d_content = '风吹起的青色衣衫，夕阳里的温暖容颜，你比以前更加美丽，像盛开的花<br>——许巍《难忘的一天》';
+      var d_okValue = '关 闭';
+
+      $('label[data-event=test1]').on('click', function() {
+          var d = dialog({
+              title: d_title,
+              content: d_content,
+              okValue: d_okValue,
+              ok: function() {                  
+                  console.log('ok');
+                  return true;
+              }
+          });
+          d.show(this);
+          
+          setTimeout(function () {
+            d.close().remove();
+          }, ms);
+      });
+      $('label[data-event=test2]').on('click', function() {
+          var d = dialog({
+              title: d_title,
+              content: d_content,
+              okValue: d_okValue,                   
+              ok: function() {                  
+                  console.log('ok');
+                  return true;
+              }
+          });
+          d.show(this);
+          
+          setTimeout(function () {
+            d.close().remove();
+          }, ms);
+      });
+      $('label[data-event=test3]').on('click', function() {
+          var d = dialog({
+              title: d_title,
+              content: d_content,
+              okValue: d_okValue,                  
+              ok: function() {                  
+                  console.log('ok');
+                  return true;
+              }
+          });
+          d.show(this);
+          
+          setTimeout(function () {
+            d.close().remove();
+          }, ms);
+      });
+      $('label[data-event=test4]').on('click', function() {
+          var d = dialog({
+              title: d_title,
+              content: d_content,
+              okValue: d_okValue,                
+              ok: function() {                  
+                  console.log('ok');
+                  return true;
+              }
+          });
+          d.show(this);
+          
+          setTimeout(function () {
+            d.close().remove();
+          }, ms);
+      });
+      $('label[data-event=test5]').on('click', function() {
+          var d = dialog({
+              title: d_title,
+              content: d_content,
+              okValue: d_okValue,
+              ok: function() {                  
+                  console.log('ok');
+                  return true;
+              }
+          });
+          d.show(this);
+          
+          setTimeout(function () {
+            d.close().remove();
+          }, ms);
+      });
+      $('label[data-event=test6]').on('click', function() {
+          var d = dialog({
+              title: d_title,
+              content: d_content,
+              okValue: d_okValue,
+              ok: function() {                  
+                  console.log('ok');
+                  return true;
+              }
+          });
+          d.show(this);
+          
+          setTimeout(function () {
+            d.close().remove();
+          }, ms);
+      });
+      $('label[data-event=test7]').on('click', function() {
+          var d = dialog({
+              title: d_title,
+              content: d_content,
+              okValue: d_okValue,
+              ok: function() {                  
+                  console.log('ok');
+                  return true;
+              }
+          });
+          d.show(this);
+          
+          setTimeout(function () {
+            d.close().remove();
+          }, ms);
+      });
+      $('label[data-event=test8]').on('click', function() {
+          var d = dialog({
+              title: d_title,
+              content: d_content,
+              okValue: d_okValue,
+              ok: function() {                  
+                  console.log('ok');
+                  return true;
+              }
+          });
+          d.show(this);
+          
+          setTimeout(function () {
+            d.close().remove();
+          }, ms);
+      });
+      $('label[data-event=test9]').on('click', function() {
+          var d = dialog({
+              title: d_title,
+              content: d_content,
+              okValue: d_okValue,
+              ok: function() {                  
+                  console.log('ok');
+                  return true;
+              }
+          });
+          d.show(this);
+          
+          setTimeout(function () {
+            d.close().remove();
+          }, ms);
+      });
+
+      /*
+      for (i = 0; i < 3; i++) { 
+          var offset = parseInt(Math.random() * 10);
+          if (offset == 0) offset = 1;
+
+          item = "label[data-event=test" + offset + "]";
+          console.log(item);
+          $(item).trigger("click");
+      }*/
+      
+      /*  $('form').submit(function(e) {
           e.preventDefault(); // prevents page reloading
           socket.emit('chat message', $('#m').val());
           $('#m').val('');
           return false;
-        });
+        });*/
+      var socket = io();
 
-        socket.on('chat message', function(msg) {
-          $('#messages').append($('<li>').text(msg));
-          // popup dialog window
-        });
+      socket.on('chat message', function(msg) {
+        //$('#messages').append($('<li>').text(msg));
+        console.log(msg);
+
+        d_content = msg;
+        
+        // popup dialog window
+        var offset = parseInt(Math.random() * 10);
+        if (offset == 0) offset = 1;
+
+        item = "label[data-event=test" + offset + "]";
+        $(item).trigger("click");
 
       });
     </script>
-  </head>
-  <body>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
+
   </body>
 </html>
