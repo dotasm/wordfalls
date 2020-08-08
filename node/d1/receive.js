@@ -6,10 +6,10 @@ amqp.connect('amqp://localhost').then(function(conn) {
   process.once('SIGINT', function() { conn.close(); });
   return conn.createChannel().then(function(ch) {
 
-    var ok = ch.assertQueue('hello', {durable: false});
+    var ok = ch.assertQueue('pipe_api', {durable: false});
 
     ok = ok.then(function(_qok) {
-      return ch.consume('hello', function(msg) {
+      return ch.consume('pipe_api', function(msg) {
         console.log(" [x] Received '%s'", msg.content.toString());
       }, {noAck: true});
     });

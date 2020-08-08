@@ -3,3 +3,4 @@ jieba
 juba
 cassandra-driver
 schedule
+requests

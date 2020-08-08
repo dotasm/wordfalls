@@ -12,3 +12,12 @@ CREATE TABLE sea.v1_word_explain (
     PRIMARY KEY (word)
 );
 
+CREATE TABLE sea.v1_word_bing (
+    word text,    
+    degree int,
+    name text,
+    snippet text,
+    url text,
+    datelastcrawled text,
+    PRIMARY KEY (word,degree,name,snippet,url,datelastcrawled)
+);

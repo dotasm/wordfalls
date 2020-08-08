@@ -11,14 +11,14 @@ channel = connection.channel()
 channel.queue_declare(queue='pipe_level_1')
 
 if len(sys.argv) == 1:
-  text_body = '题目：林则徐虎门销烟'
+  text_body = '航空制造技术：连续CF/PEEK预浸料制造技术研究进展'
 else:
   text_body = sys.argv[1]
 
 
 channel.basic_publish(
 	exchange='',
-	routing_key='pipe_level_1',
+	routing_key='pipe_base',
 	body = text_body
 )
 

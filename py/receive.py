@@ -6,7 +6,7 @@ from cassandra.cluster import Cluster
 from cassandra.query import SimpleStatement
 
 # cassandra
-cluster_data = Cluster(['192.168.1.19'])
+cluster_data = Cluster(['10.0.0.5'])
 session_data = cluster_data.connect('sea')
 
 # rabbitmq
@@ -15,11 +15,11 @@ connection = pika.BlockingConnection(
 )
 channel = connection.channel()
 
-channel.queue_declare(queue='pipe_level_1')
-channel.queue_declare(queue='pipe_level_2')
-channel.queue_declare(queue='pipe_level_3')
+channel.queue_declare(queue='pipe_base')
+channel.queue_declare(queue='pipe_search')
+channel.queue_declare(queue='pipe_query')
 
-symbol_list = [',', '，', '.', '。', '、', ':', '：', '“', '”']
+symbol_list = [',', '，', '.', '。', '、', ':', '：', '“', '”', '/']
 
 
 def get_word_explain():
@@ -47,21 +47,23 @@ def callback(ch, method, properties, body):
       session_data.execute(wc_cql)
 
       # 2.未解释的新词进入二级队列 用于手动或自动补全名词解释
-      if word not in job_search:
+      if word not in job_search:        
         channel.basic_publish(
           exchange='',
-          routing_key='pipe_level_2',
+          routing_key='pipe_search',
           body = word
         )
-        print("[Search] pipe_level_2: " + word)
+        print("[Search] pipe_search: " + word)
+
+        job_search.add(word)
       else:
-        # 3.已解释的旧词跳过二级直接进入三级队列 驱动API和websocket显示
+        # 3.已解释的旧词跳过二级直接进入三级队列 驱动API和websocket显示        
         channel.basic_publish(
           exchange='',
-          routing_key='pipe_level_3',
+          routing_key='pipe_query',
           body = word
         )
-        print("[API] pipe_level_3: " + word)
+        print("[Query] pipe_query: " + word)
 
         #job_search.add(word)
         # debug      
@@ -74,7 +76,7 @@ job_search = get_word_explain()
 print(job_search)
 
 channel.basic_consume(
-  queue='pipe_level_1',
+  queue='pipe_base',
   on_message_callback=callback,
   auto_ack=True
 )

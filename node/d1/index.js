@@ -4,9 +4,6 @@ var io = require('socket.io')(http);
 var amqp = require('amqplib');
 
 
-var init_msg = '初始化...';
-var fire_msg = '林则徐虎门销烟';
-
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
@@ -30,10 +27,10 @@ amqp.connect('amqp://localhost').then(function(conn) {
   process.once('SIGINT', function() { conn.close(); });
   return conn.createChannel().then(function(ch) {
 
-    var ok = ch.assertQueue('pipe_level_3', {durable: false});
+    var ok = ch.assertQueue('pipe_api', {durable: false});
 
     ok = ok.then(function(_qok) {
-      return ch.consume('pipe_level_3', function(msg) {
+      return ch.consume('pipe_api', function(msg) {
         // add websocket
         /*if (msg.content.toString() == 'fire') {
           io.emit('chat message', fire_msg);

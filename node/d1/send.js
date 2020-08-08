@@ -4,7 +4,7 @@ var amqp = require('amqplib');
 
 amqp.connect('amqp://localhost').then(function(conn) {
   return conn.createChannel().then(function(ch) {
-    var q = 'pipe_level_3';
+    var q = 'pipe_api';
     var msg = '涡扇<img src="http://n.sinaimg.cn/mil/gif_image/782/w500h282/20180713/GhXX-hfhfwmu8231056.gif">';
 
     var ok = ch.assertQueue(q, {durable: false});
