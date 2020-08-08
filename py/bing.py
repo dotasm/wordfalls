@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 ########### Python 3.2 #############
 import http.client, urllib.request, urllib.parse, urllib.error, base64, json, ast
 from cassandra.cluster import Cluster
